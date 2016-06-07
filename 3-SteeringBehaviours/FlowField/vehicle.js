@@ -46,7 +46,7 @@ var Vehicle = function(x, y, sr){
   this.display = function(){
     blendMode(ADD);
     stroke(this.colour);
-    strokeWeight(map(noise(this.xoff), 0, 1, 1, 5));
+    strokeWeight(map(noise(this.xoff), 0, 1, 0, 6));
     line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
     this.xoff += 0.3;
   };

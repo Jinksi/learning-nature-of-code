@@ -6,12 +6,16 @@ function Boid(x, y, maxSpeed, maxForce, trailLength){
   this.maxSpeed = maxSpeed || 5
   this.maxForce = maxForce || 0.1
   this.desiredSeparation = 50
+  // this.col = Math.round(Math.random(0, 1)) ? '#F84D4D' : '#68ABFA'
+  this.col = '255'
 
   this.trailLength = trailLength || 2
   this.trailPoints = []
 
   this.arg1 = 1
   this.arg2 = 1
+  this.arg3 = 2
+
 
   this.run = function(boids){
     this.flock(boids)
@@ -21,7 +25,8 @@ function Boid(x, y, maxSpeed, maxForce, trailLength){
   }
 
   this.render = function(){
-    stroke(255)
+    blendMode(ADD)
+    stroke(this.col)
     strokeWeight(1)
     if(this.trailPoints.length > 1){
       for(var i = 1; i < this.trailPoints.length; i++){
@@ -82,7 +87,7 @@ function Boid(x, y, maxSpeed, maxForce, trailLength){
     // weighting
     separate.mult(this.arg1)
     align.mult(this.arg2)
-    cohesion.mult(1)
+    cohesion.mult(this.arg3)
 
     this.applyForce(separate)
     this.applyForce(align)

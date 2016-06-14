@@ -17,10 +17,10 @@ function draw(){
   background(21, bg)
   for(var i = 0; i < boids.length; i++){
     boids[i].run(boids)
-    boids[i].arg1 = map(mouseX, 0, width, 0, 3)
-    boids[i].arg2 = map(mouseY, 0, height, 0, 3)
-    boids[i].maxForce = map(mouseY, 0, height, 0, 1)
-    boids[i].maxSpeed = map(mouseX, 0, height, 0, 30)
+    boids[i].arg1 = map(mouseX, width, 0, 0, 3)
+    boids[i].arg2 = map(mouseY, height, 0, 3, 0)
+    boids[i].maxForce = map(mouseY, height, 0, 0.05, 1)
+    boids[i].maxSpeed = map(mouseY, height, 0, 1, 10)
     boids[i].trailLength = trail
   }
 }

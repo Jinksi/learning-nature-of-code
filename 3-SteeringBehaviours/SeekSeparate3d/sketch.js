@@ -1,15 +1,15 @@
-var vehicles = [];
-var vehicleCount = 250;
-var sr;
+var vehicles = []
+var vehicleCount = 250
+var sr
 
 function setup(){
-  // pixelDensity(2);
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  pixelDensity(2)
+  createCanvas(windowWidth, windowHeight, WEBGL)
   background(21)
   for(var i = 0; i < vehicleCount; i++){
-    sr = random(5, 20);
+    sr = random(5, 20)
 
-    vehicles[i] = new Vehicle(width/2 + random(-5, 5), height/2 + random(-5, 5), random(1000), sr);
+    vehicles[i] = new Vehicle(width/2 + random(-5, 5), height/2 + random(-5, 5), random(1000), sr)
   }
 
 }
@@ -17,7 +17,7 @@ function setup(){
 function draw(){
   // ambientLight(255, 255, 255);
   // blendMode(NORMAL);
-  background(21);
+  background(21)
   // blendMode(NORMAL);
   if(vehicles.length > vehicleCount){
     vehicles.splice(0, vehicles.length - vehicleCount)
@@ -26,9 +26,9 @@ function draw(){
   }
   vehicles.map(function(vehicle){
     vehicle.applyBehaviours(vehicles)
-    vehicle.update();
-    vehicle.display();
-  });
+    vehicle.update()
+    vehicle.display()
+  })
 }
 
 function mouseDragged(){
@@ -37,16 +37,16 @@ function mouseDragged(){
 
 function mouseClicked(){
   for(var i = 0; i < vehicleCount; i++){
-    vehicles[i] = new Vehicle(width/2 + random(-5, 5), height/2 + random(-5, 5), random(1000), sr);
+    vehicles[i] = new Vehicle(width/2 + random(-5, 5), height/2 + random(-5, 5), random(1000), sr)
   }
 }
-setInterval(function(){
-  for(var i = 0; i < vehicleCount; i++){
-    vehicles[i] = new Vehicle(width/2 + random(-5, 5), height/2 + random(-5, 5), random(1000), sr);
-  }
-}, 5000);
+// setInterval(function(){
+//   for(var i = 0; i < vehicleCount; i++){
+//     vehicles[i] = new Vehicle(width/2 + random(-5, 5), height/2 + random(-5, 5), random(1000), sr);
+//   }
+// }, 5000);
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  background(21);
+  resizeCanvas(windowWidth, windowHeight)
+  background(21)
 }

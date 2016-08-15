@@ -1,21 +1,21 @@
 var Vehicle = function(x, y, z, sr){
-  this.prevPos = createVector(x,y, z);
-  this.pos = createVector(x,y, z );
-  this.vel = createVector(0,0, 0);
-  this.acc = createVector(0,0, 0);
-  this.colour = random(1) > 0.5 ? 'RGB(150, 211, 250)' : '255';
-  this.xoff = random(0, 100);
-  this.sr = sr;
+  this.prevPos = createVector(x,y, z)
+  this.pos = createVector(x,y, z )
+  this.vel = createVector(0,0, 0)
+  this.acc = createVector(0,0, 0)
+  this.colour = random(1) > 0.5 ? 'RGB(150, 211, 250)' : '255'
+  this.xoff = random(0, 100)
+  this.sr = sr
   this.desiredSeparation = 50
   this.birth = millis()
   // maximum magnitude
-  this.maxSpeed = random(this.sr / 5, this.sr);
+  this.maxSpeed = random(this.sr / 5, this.sr)
   // turning circle
-  this.maxForce = random(0.2, 0.01);
+  this.maxForce = random(0.2, 0.01)
 
   this.applyForce = function(force){
-    this.acc.add(force);
-  };
+    this.acc.add(force)
+  }
 
   this.applyBehaviours = function(vehicles){
     var separateForce = this.separate(vehicles)
@@ -40,7 +40,7 @@ var Vehicle = function(x, y, z, sr){
 
     // Steering = desired - velocity
     var steer = p5.Vector.sub(desired, this.vel)
-    steer.limit(this.maxForce);
+    steer.limit(this.maxForce)
     return steer
   }
 
@@ -76,37 +76,37 @@ var Vehicle = function(x, y, z, sr){
   }
 
   this.update = function(){
-    this.prevPos = this.pos.copy();
-    this.vel.add(this.acc);
-    this.vel.limit(this.maxSpeed); // limit vel to maxSpeed
-    this.pos.add(this.vel);
-    this.acc.set(0,0);
+    this.prevPos = this.pos.copy()
+    this.vel.add(this.acc)
+    this.vel.limit(this.maxSpeed) // limit vel to maxSpeed
+    this.pos.add(this.vel)
+    this.acc.set(0,0)
     // this.colour = map(millis(), this.birth, millis() + 6000, 255, 0);
     // if(this.pos.y < 0){ this.pos.y = this.prevPos.y = 0; }
     // if(this.pos.x < 0){ this.pos.x = this.prevPos.x = 0; }
     // if(this.pos.y > height){ this.pos.y = this.prevPos.y = height; }
     // if(this.pos.x > width){ this.pos.x = this.prevPos.x =  width; }
-  };
+  }
 
   this.display = function(){
-    push();
+    push()
     // blendMode(ADD);
-    stroke(this.colour);
+    stroke(this.colour)
     // stroke(255);
     // fill(255);
     // strokeWeight(map(noise(this.xoff), 0, 1, 1, 5));
-    translate(-width/2, -height/2, 0);
+    translate(-width/2, -height/2, 0)
     // translate(this.pos.x, this.pos.y, this.pos.z)
-    line(this.pos.x, this.pos.y, this.pos.z, this.prevPos.x, this.prevPos.y, this.pos.z);
+    line(this.pos.x, this.pos.y, this.pos.z, this.prevPos.x, this.prevPos.y, this.pos.z)
     // triangle(
     //   this.pos.x, this.pos.y, this.pos.z,
     //   this.prevPos.x, this.prevPos.y, this.prevPos.z,
     //   this.pos.x + map(noise(this.xoff), 0, 1, -2, 2), this.pos.y + map(noise(this.xoff), 0, 1, -2, 2), this.pos.z
     // )
       // sphere(1);
-    pop();
+    pop()
 
-    this.xoff += 0.03;
-  };
+    this.xoff += 0.03
+  }
 
-};
+}

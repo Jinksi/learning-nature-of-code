@@ -97,7 +97,8 @@ var Vehicle = function(x, y, z, sr){
     // strokeWeight(map(noise(this.xoff), 0, 1, 1, 5));
     translate(-width/2, -height/2, 0)
     // translate(this.pos.x, this.pos.y, this.pos.z)
-    line(this.pos.x, this.pos.y, this.pos.z, this.prevPos.x, this.prevPos.y, this.pos.z)
+    line(this.pos.x, this.pos.y, this.pos.z, this.prevPos.x, this.prevPos.y, this.prevPos.z)
+
     // triangle(
     //   this.pos.x, this.pos.y, this.pos.z,
     //   this.prevPos.x, this.prevPos.y, this.prevPos.z,
